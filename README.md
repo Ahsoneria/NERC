@@ -2,7 +2,7 @@
 Arizona State University : CSE 573 - Semantic Web Mining
 Course Project
 
-Firstly, install requirements using
+Install requirements using
 
 ```pip install -r requirements.txt```
   
