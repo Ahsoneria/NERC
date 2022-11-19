@@ -17,4 +17,4 @@ Flask server starts, UI on
 
 Output:
 
-![Alt text] (https://github.com/Ahsoneria/Named-Entity-Recognition-Classifcation/blob/main/src/templates/images/sample_UI.png?raw=true "Sample UI")
+https://github.com/Ahsoneria/Named-Entity-Recognition-Classifcation/blob/main/src/templates/images/sample_UI.png
