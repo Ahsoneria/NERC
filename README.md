@@ -14,3 +14,7 @@ Run the app using:
 Flask server starts, UI on 
 
 ```http://localhost:9093/nerc_home```
+
+Output:
+
+![Alt text] (https://github.com/Ahsoneria/Named-Entity-Recognition-Classifcation/blob/main/src/templates/images/sample_UI.png?raw=true "Sample UI")
