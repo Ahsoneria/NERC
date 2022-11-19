@@ -14,8 +14,8 @@ class NercAPI:
 		"""
 		TODO 
 		"""
-		# sentences = document.split(' ')
 		sentences = document.strip()
+		sentences = document.split(' ')
 		return sentences
 
 	def get_crf_classification(self):
