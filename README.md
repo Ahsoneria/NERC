@@ -13,4 +13,5 @@ Run the app using:
 
 Flask server starts, UI on 
 
+<<<<<<< HEAD
 ```http://localhost:9093/nerc_home```
