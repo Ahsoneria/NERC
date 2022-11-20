@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+   h1 {
+      text-align:center; 
+      margin-top: 70pt; 
+      margin-bottom: 40pt;
+   }
+   h4 {
+      text-align:center;
+   }
+   .container {
+      margin-top: 50pt;
+      display: flex;
+      justify-content: space-between;
+   }
+   .container div {
+   width: 100%;
+   height: 500px;
+   margin: 2px;
+   border-style: outset;
+   }
+   p {
+      margin: 10px;
+   }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>NERC</title>
 </head>
 <body>
+   <h1> Named Entity Recognition and Classification </h1>
    <form action = "http://{{ host }}:{{ port }}/nerc_home" method = "post">
-      <p>Input Text: <input type = "text" name = "input_text" /> <input type = "submit" value = "submit" /></p>
+      <p style="text-align:center;">Input Text: <input type = "text" name = "input_text" /> <input type = "submit" value = "submit" /></p>
    </form>    
-   {% block content %}
-   {% endblock %}
+   <div class="container">
+      {% block content %}
+      <div>
+         <h4> <u>CRF</u> </h4>
+
+      </div>
+      <div>
+         <h4> <u>BERT</u> </h4>
+      </div>
+      <div>
+         <h4> <u>BiLSTM</u> </h4>
+      </div>
+      {% endblock %}
+   </div>
 </body>
 </html>

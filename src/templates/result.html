@@ -1,6 +1,16 @@
 {% extends 'index.html' %}
 
 {% block content %}
-	<p>Input text : {{ input_text }}</p>
-	<p>Nerc output : {{ nerc_output }}</p>
+	<div>
+		<h4> <u>CRF</u> </h4>
+		<p> {{output}} </p>
+	</div>
+	<div>
+		<h4> <u>BERT</u> </h4>
+		<p> {{output}} </p>
+	</div>
+	<div>
+		<h4> <u>BiLSTM</u> </h4>
+		<p> {{output}} </p>
+	</div>
 {% endblock %}

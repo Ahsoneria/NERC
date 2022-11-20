@@ -23,7 +23,7 @@ def create_app(host, port):
             result = api.get_nerc_result(input_text)
             return render_template('result.html', 
                                    input_text=input_text,
-                                   nerc_output=result)
+                                   output=result)
 
     return app
 
