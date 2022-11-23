@@ -84,7 +84,7 @@ class NercAPI:
           sentences = [nltk.pos_tag(sent) for sent in sentences]
           return sentences
 
-      with open('buffer/nerc/src/crf.pkl', "rb") as input_file:
+      with open('NERC/src/crf.pkl', "rb") as input_file:
         model = pickle.load(input_file)
 
       wordsList = pos_tags(preprocess)
