@@ -1,16 +1,64 @@
+
+
 {% extends 'index.html' %}
 
 {% block content %}
-	<div class="innerdiv">
-		<h4 class="sectionheading"> <u>CRF</u> </h4>
-		<p> {{output}} </p>
-	</div>
-	<div class="innerdiv">
-		<h4 class="sectionheading"> <u>BERT</u> </h4>
-		<p> {{output}} </p>
-	</div>
-	<div class="innerdiv">
-		<h4 class="sectionheading"> <u>BiLSTM</u> </h4>
-		<p> {{output}} </p>
-	</div>
+  <div id="outerdiv">
+    <div class="legenddiv"> 
+      <div> Legend : <span class="highlight_person">Person</span> <span class="highlight_org">ORG</span> <span class="highlight_location">Location</span> <span class="highlight_baseline">Entity</span>  </div>
+    </div>
+  </div>
+  <div id="outerdiv">
+    <div class="innerdiv">
+      <h4 class="sectionheading"> <u>SpaCy</u> </h4>
+      <div id="spacy">{{input_text}}</div>
+    </div>
+    <div class="innerdiv">
+      <h4 class="sectionheading"> <u>BERT</u> </h4>
+      <div id="bert">{{input_text}}</div>
+    </div>
+   </div>
+   <div id="outerdiv">
+    <!-- <div class="innerdiv">
+      <h4 class="sectionheading"> <u>BiLSTM</u> </h4>
+      <p> {{output2}} </p>
+    </div> -->
+    <div class="innerdiv">
+      <h4 class="sectionheading"> <u>CRF</u> </h4>
+      <div id="crf">{{input_text}}</div>
+    </div>
+    <div class="innerdiv">
+      <h4 class="sectionheading"> <u>Baseline</u> </h4>
+      <div id="baseline">{{input_text}}</div>
+    </div>
+  </div>
+  <!-- <div id="outerdiv">
+    <div class="innerdiv">
+      <h4 class="sectionheading"> <u>Baseline</u> </h4>
+      <div id="baseline">{{input_text}}</div>
+    </div>
+  </div> -->
+  <script>
+      var label_string = {{ output00|tojson|safe }};
+      var label_map = JSON.parse(label_string);
+      var color_string = {{ output01|tojson|safe }};
+      var color_map = JSON.parse(color_string);
+      highlight("spacy", label_map, color_map);
+
+      label_string = {{ output10|tojson|safe }};
+      label_map = JSON.parse(label_string);
+      color_string = {{ output11|tojson|safe }};
+      color_map = JSON.parse(color_string);
+      highlight("bert", label_map, color_map);
+
+      label_string = {{ output30|tojson|safe }};
+      label_map = JSON.parse(label_string);
+      color_string = {{ output31|tojson|safe }};
+      color_map = JSON.parse(color_string);
+      highlight("crf", label_map, color_map);
+
+      label_string = {{ output4|tojson|safe }};
+      label_map = JSON.parse(label_string);
+      highlight_base("baseline", label_map);
+  </script>
 {% endblock %}

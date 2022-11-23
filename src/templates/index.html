@@ -1,48 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
+    html {
+        height: 100%;
+    }
+    body {
+        height: 100%;
+        margin: 0;
+        font-weight: bold;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    }
+    h1 {
+      font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+      font-size: 28px;
+    }
+    .button-33 {
+      background-color: #FFD580;
+      border-radius: 100px;
+      /* box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px; */
+      color: black;
+      cursor: pointer;
+      display: inline-block;
+      font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+      padding: 7px 20px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 250ms;
+      border: 0;
+      font-size: 15px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      margin-bottom: 20pt;
+    }
+    .button-33:hover {
+      /* box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; */
+      transform: scale(1.07);
+    }
+    input[type=text] {
+      width: 130px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 17px;
+      background-color: #c2fbd7;
+      color: black;
+      font-weight: bold;
+      padding: 12px 20px 12px 40px;
+      transition: width 0.4s ease-in-out;
+      display: inline-block;
+      float: center;
+      text-align: center;
+      font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    }
+
+    input[type=text]:focus {
+      width: 60%;
+    }
    .sectionheading {
-      margin: 8px;
+      margin: 3pt;
+      margin-bottom: 15pt;
       text-align:center;
+      font-size: 19px;
    }
    #outerdiv {
-      margin: 50pt;
+      margin: 15pt;
       display: flex;
       justify-content: space-between;
+      font-size: 19px;
    }
    .innerdiv {
    width: 100%;
-   height: 500px;
-   margin: 3px;
+   height: 150px;
+   margin: 5pt;
    border-style: ridge;
    border-color: grey;
+   border-radius:15px;
+   text-align:center;
+   }
+   .legenddiv {
+   width: 100%;
+   height: 20px;
+   margin: 5pt;
+   text-align:center;
    }
    p {
       margin: 10px;
    }
+    .highlight_person {
+      background-color: blue;
+      color: yellow;
+    }
+    .highlight_location {
+      background-color: yellow;
+      color: black;
+    }
+    .highlight_org {
+      background-color: maroon;
+      color: yellow;
+    }
+    .highlight_baseline {
+      background-color: black;
+      color: yellow;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
     <title>NERC</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <script>
+      function highlight(id, label_map, color_map) {
+        var inputText = document.getElementById(id);
+        var innerHTML = inputText.innerHTML;
+        var newhtml = "";
+        var prev_end = 0;
+        var color = '';
+        var new2 = new Map(Object.entries(color_map));
+        for (const [key, value] of Object.entries(label_map)) {
+          color = (new2.get(key));
+          if(color=="person"){
+            newhtml += innerHTML.substring(prev_end, parseInt(key)) + "<span class='highlight_person'>" + innerHTML.substring(parseInt(key), parseInt(key)+parseInt(value)) + "</span>";
+          }
+          else if(color=="org"){
+            newhtml += innerHTML.substring(prev_end, parseInt(key)) + "<span class='highlight_org'>" + innerHTML.substring(parseInt(key), parseInt(key)+parseInt(value)) + "</span>";
+          }
+          else {
+            newhtml += innerHTML.substring(prev_end, parseInt(key)) + "<span class='highlight_location'>" + innerHTML.substring(parseInt(key), parseInt(key)+parseInt(value)) + "</span>";
+          }
+          prev_end = parseInt(key)+parseInt(value);
+        }
+        newhtml += innerHTML.substring(prev_end);
+        inputText.innerHTML = newhtml;
+      }
+      function highlight_base(id, label_map) {
+        var inputText = document.getElementById(id);
+        var innerHTML = inputText.innerHTML;
+        var newhtml = "";
+        var prev_end = 0;
+        for (const [key, value] of Object.entries(label_map)) {
+          newhtml += innerHTML.substring(prev_end, parseInt(key)) + "<span class='highlight_baseline'>" + innerHTML.substring(parseInt(key), parseInt(key)+parseInt(value)) + "</span>";
+          prev_end = parseInt(key)+parseInt(value);
+        }
+        newhtml += innerHTML.substring(prev_end);
+        inputText.innerHTML = newhtml;
+      }
+    </script>
 </head>
-<body style="background-color: cadetblue;">
-   <h1 style="text-align:center;margin-top:50pt;margin-bottom:40pt;"> Named Entity Recognition and Classification </h1>
-   <form action = "http://{{ host }}:{{ port }}/nerc_home" method = "post">
-      <p style="text-align:center;">Input Text: <input type = "text" name = "input_text" /> <input type = "submit" value = "submit" class="btn btn-primary"/></p>
+<body style="background: rgb(2,0,36); background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(1,15,97,1) 50%, rgba(0,212,255,1) 100%);" text="#ffffff">
+<!-- <body style="background-image: url({{ url_for('static', filename='images/background.png') }}) center center cover no-repeat fixed;"> -->
+   <h1 style="text-align:center;margin-top:50pt;margin-bottom:30pt;"> NERC : Named Entity Recognition & Classification </h1>
+   <form action = "{{ host }}" method = "post">
+      <p style="text-align:center;"><input type = "text" name = "input_text" placeholder="Input.."/></p>
+      <p style="text-align:center;"><input type = "submit" value = "Submit" class="button-33"/></p>
    </form>
-   <div id="outerdiv">
-      {% block content %}
-      <div class="innerdiv">
-         <h4 class="sectionheading"> <u>CRF</u> </h4>
-      </div>
-      <div class="innerdiv">
-         <h4 class="sectionheading"> <u>BERT</u> </h4>
-      </div>
-      <div class="innerdiv">
-         <h4 class="sectionheading"> <u>BiLSTM</u> </h4>
-      </div>
-      {% endblock %}
-   </div>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
