@@ -31,7 +31,7 @@ class bilstm_model:
 
 
   def data_preprocessing(self):
-      data_df = pd.read_csv("buffer/nerc/src/ner_dataset.csv", encoding="iso-8859-1", header=0)
+      data_df = pd.read_csv("NERC/src/ner_dataset.csv", encoding="iso-8859-1", header=0)
 
       data_df = data_df.fillna(method="ffill")
       data_df["Sentence #"] = data_df["Sentence #"].apply(lambda s: s[9:])
