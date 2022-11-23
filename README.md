@@ -15,7 +15,7 @@ In Google Colab, run following snippet:
 
 !ngrok authtoken [self_ngrok_token]
 
-!git clone https://[github_personal_token]@github.com/Ahsoneria/buffer.git
+!git clone https://[github_personal_token]@github.com/Ahsoneria/NERC.git
 
 !python3 NERC/src/main.py
 ```
