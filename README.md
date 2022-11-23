@@ -17,5 +17,5 @@ In Google Colab, run following snippet:
 
 !git clone https://[github_personal_token]@github.com/Ahsoneria/buffer.git
 
-!python3 buffer/nerc/src/main.py
+!python3 NERC/src/main.py
 ```
