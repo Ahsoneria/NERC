@@ -1,12 +1,12 @@
 NERC : Named Entity Recognition and Classification
 
-We have created an UI, which takes input English text, and outputs multiple classifications for the text.
+We have created an User Interface (UI), which takes input English text, and outputs multiple classifications for the text.
 
 We recognize and classify ```Person, Location, Organization, Entity```.
 
 We utilize 5 Machine Learning Models : ```CRF, BERT, SpaCy, BiLSTM+CRF, Baseline``` models.
 
-In Google Colab, run following snippet:
+To run the UI, in Google Colab, run following snippet:
 (tokens edited)
 
 ```
