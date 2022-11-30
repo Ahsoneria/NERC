@@ -36,6 +36,10 @@ In ```src``` directory following files are present:
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data preprocessing steps, 
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getting entities and their labels for each type of ML model (SpaCy, BERT, CRF, Baseline)
+  
+ &nbsp;&nbsp;&nbsp;&nbsp; ```templates/index.html```: Home page, along with important CSS styling and JavaScript highlighting functions.
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp; ```templates/result.html```: Page with divs for Display of multiple results along with the Legend of color scheme for highlighting.
 
  &nbsp;&nbsp;&nbsp;&nbsp; ```Final_CRF.ipynb```: Jupyter notebook to be run on google colab to train the CRF model.
   
