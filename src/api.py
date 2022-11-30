@@ -48,9 +48,6 @@ class NercAPI:
         return [{k: v for k, v in sorted(entity_map.items(), key=lambda item: item[0])}, color_map]
 
     def get_bert_classification(self, preprocessed):
-        """
-        TODO 
-        """
         ent_list = self.bert_ner(preprocessed)
         if not ent_list:
           return [{}, {}]
@@ -72,7 +69,7 @@ class NercAPI:
 
     def get_bilstm_classification(self, preprocessed):
         """
-        TODO 
+        Because of TensorFlow version conflicts (2.x vs 1.y), the BiLSTM model could not be currently integrated into the UI with the others.
         """
         # result = self.bilstm_m(preprocessed)
         return ''
