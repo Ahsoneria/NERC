@@ -46,6 +46,8 @@ In ```src``` directory following files are present:
  &nbsp;&nbsp;&nbsp;&nbsp; ```crf.pkl```: Saved CRF model which is directly used by corresponding API, so no re-training required.
   
  &nbsp;&nbsp;&nbsp;&nbsp; ```plot_metrics.py```: Generates plots used in presentation.
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp; ```BaselineModel.py```: Contains Baseline model logic and generates metrics for the baseline model.
   
   Because of TensorFlow version conflicts (2.x vs 1.y), the BiLSTM model could not be currently integrated into the UI with the others.
   
